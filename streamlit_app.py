@@ -1,6 +1,14 @@
 import streamlit as st
+from pages import fetch_table_page  # Import the standalone page module
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+def main():
+    st.sidebar.title("Navigation")
+    page = st.sidebar.radio("Go to", ["Fetch Table from URL", "Other Page"])
+
+    if page == "Fetch Table from URL":
+        fetch_table_page.show_page()  # Display the fetch table page
+    elif page == "Other Page":
+        st.write("This could be another page.")
+
+if __name__ == "__main__":
+    main()
